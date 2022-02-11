@@ -24,7 +24,7 @@
         return $a_r;
     }
 
-    function getHeader( $s_heading, $s_menue = '', $js = '', $html5 = false, $s_meta = '' ){
+    function getHeader( $s_heading, $s_menue = '', $js = '', $html5 = true, $s_meta = '' ){
         if( $html5 === false ){
             $r ='<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -67,8 +67,10 @@
     <![endif]-->
     <script src="./scripts/jquery-ui-1.10.0/js/jquery-1.9.0.js"></script>
     <script src="./scripts/jquery-ui-1.10.0/js/jquery-ui-1.10.0.custom.js"></script>
+    <script type="text/javascript" src="scripts/dates.js"></script>
     '. $js .'
     <script src="./scripts/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="scripts/search.js"></script>
     <link href="chromisWCstyle.css" rel="stylesheet" type="text/css" />
     <link href="chromisGED.css" rel="stylesheet" type="text/css" />
     <link href="./scripts/jquery-ui-1.10.0/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet">

@@ -42,7 +42,7 @@ if( !isset($_REQUEST['Surname'])) {
       <tr>
         <td valign="top">&nbsp;</td>
         <td valign="top"><label>
-          <input type="submit" name="search" id="search" value="Search" />
+          <button type="submit" class="btn btn-primary" name="search" id="search" value="Search">Search</button>
         </label></td>
       </tr>
     </table>

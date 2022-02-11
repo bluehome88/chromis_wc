@@ -203,8 +203,8 @@ echo getHeader('User management', $s_menu, $js);
           <tr>
             <td>&nbsp;</td>
             <td align="right">
-                <input type="submit" name="Submit" value="Save" />
-                <input type="button" name="Cancel" value="Cancel" onclick="window.location='search_Admin.php'" />
+                <button type="submit" class="btn btn-primary" name="Submit" value="Save">Save</button>
+                <button type="button" class="btn btn-danger" name="Cancel" value="Cancel" onclick="window.location='search_Admin.php'">Cancel</button>
             </td>
           </tr>
         </table>

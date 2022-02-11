@@ -19,11 +19,11 @@ FORM{margin:0px;font-weight:normal;padding:0px;}
 table{text-align:left;color:#454142;height:auto;margin-top:0px;margin-right:0px;margin-bottom:40px;margin-left:0px;padding-top:0px;padding-right:0;padding-bottom:15px;padding-left:1;background-image:url(images/category_header_footer.gif);background-repeat:no-repeat;background-position:left bottom;border-right-width:1px;border-right-style:solid;border-right-color:#EEEEEE;vertical-align:top;background-color:#EEEEEE;}
 tr{margin:0px;padding:0px;}
 h4{padding-bottom:5px;}
-td{padding:10px;height:auto;border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:solid;border-right-style:none;border-bottom-style:none;border-left-style:solid;border-top-color:#FFFFFF;border-right-color:#FFFFFF;border-bottom-color:#FFFFFF;border-left-color:#FFFFFF;vertical-align:top;margin-top:0px;margin-right:0px;margin-bottom:10px;margin-left:0px;}
+td{padding:10px;width:inherit;height:auto;border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:solid;border-right-style:none;border-bottom-style:none;border-left-style:solid;border-top-color:#FFFFFF;border-right-color:#FFFFFF;border-bottom-color:#FFFFFF;border-left-color:#FFFFFF;vertical-align:middle;margin-top:0px;margin-right:0px;margin-bottom:10px;margin-left:0px;}
 th{font-weight:bold;text-align:left;padding:4px;}
 em{font-style:italic;margin:0px;padding:0px;}
 select{font-size:1em;}
-input{font-size:1em;background-color:#FFFFFF;}
+input{font-size:1em;background-color:#FFFFFF;margin-bottom:0 !important;}
 .clearall{clear:both;border-bottom-width:1px;border-bottom-style:dotted;border-bottom-color:#FFFFFF;height:1px;padding-top:1px;padding-right:0px;margin-right:37px;margin-bottom:10px;}
 #fullcontent .category .item a{text-decoration:none;color:#EC008C;}
 #fullcontent{margin:0px;width:680px;padding:30px 30px 20px 50px;border-left-width:1px;border-left-style:solid;border-left-color:#5371B4;}
@@ -120,4 +120,5 @@ input{font-size:1em;background-color:#FFFFFF;}
 .suggestionList li{list-style-type:disc;margin:0px 0px 3px 0px;padding:3px;cursor:pointer;list-style-image:none;}
 .suggestionList li:hover{background-color:#666666;}
 .LocationName{display:inline-block;min-width:70px;line-height:30px;}
-.MPN{display:inline-block;line-height:30px;}
+.MPN{display:inline-block;line-height:30px;margin-bottom:5px;}
+label{display:inline-block;}

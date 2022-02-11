@@ -230,9 +230,7 @@ include "include/class_objects.php";
           </tr>
           <tr>
             <td width="268">&nbsp;</td>
-            <td width="261"><input type="submit" name="Submit" value="Save" onClick=
-
-"MM_validateForm('OtherNames','','R', 'Surname','','R','PCode','','RisNum','Address','','R','Suburb','','R','R','Postcode','','R');return document.MM_returnValue"></td>
+            <td width="261"><button type="submit" class="btn btn-primary" name="Submit" value="Save" onClick="MM_validateForm('OtherNames','','R', 'Surname','','R','PCode','','RisNum','Address','','R','Suburb','','R','R','Postcode','','R');return document.MM_returnValue">Submit</button></td>
           </tr>
         </table>
       </form>

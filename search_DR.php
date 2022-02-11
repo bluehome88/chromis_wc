@@ -37,7 +37,7 @@ echo getHeader('Client record search', $s_menu, $js);
       <tr>
         <td>&nbsp;</td>
         <td><label>
-          <input type="submit" name="search" id="search" value="Search" />
+          <button type="submit" class="btn btn-primary" name="search" id="search" value="Search">Search</button>
         </label></td>
       </tr>
     </table>

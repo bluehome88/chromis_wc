@@ -55,7 +55,7 @@ if( !( isset($_POST['Surname']) && $_POST['Surname'] != "" )) {
       <tr>
         <td>&nbsp;</td>
         <td><label>
-          <input type="submit" name="Location" id="Location" value="Continue" />
+          <button type="submit" class="btn btn-primary" name="Location" id="Location" value="Continue">Continue</button>
         </label></td>
       </tr>
     </table>

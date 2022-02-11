@@ -16,12 +16,12 @@ echo getHeader('Medical certificate login');
                             <td width="254">Password</td>
                             <td width="389"><label>
                               <input type="password" name="pword" id="password" />
-                            </label>      <br /></td>
+                            </label></td>
                           </tr>
                           <tr>
                             <td width="254">&nbsp;</td>
                             <td width="389" ><label>
-                              <input type="submit" name="Login" id="Login" value="Submit" />
+                              <button type="submit" class="btn btn-primary" name="Login" id="Login" value="Submit">Submit</button>
                             </label></td>
                           </tr>
                         </table>
