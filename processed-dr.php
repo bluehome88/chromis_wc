@@ -1,5 +1,5 @@
 <?php
-require_once('../../etc/config.php');
+require_once('../config.php');
 require_once( ROOT_FOLDER . 'lib/header_doc.php');
 
 $s_meta = '<meta http-equiv="refresh" content="0;URL=\''. SECURE_URL . DOC_PROCESSED_2 . '?i='. $_GET['i'] .'&j=1\'">';

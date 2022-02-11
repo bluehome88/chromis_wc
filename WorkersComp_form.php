@@ -1,6 +1,6 @@
 <?php
 $b_user_area = 1;
-require_once('../../etc/config.php');
+require_once('../config.php');
 require_once(ROOT_FOLDER . 'lib/header_doc.php');
 
 $a_patient =  new patient;
