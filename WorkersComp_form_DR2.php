@@ -548,7 +548,7 @@ echo getHeader('Medical certificate form', $s_menu, $js, true);
                         $a_options2['6 hrs']='6 hrs';
                         $a_options2['7 hrs']='7 hrs';
                         $a_options2['8 hrs']='8 hrs';
-                        foreach( $a_options as $key => $val ){
+                        foreach( $a_options2 as $key => $val ){
                             $selected = "";
                             if( $key == $a_medical_cert->has_cap_for_travellingupto )
                                 $selected = "selected='selected'";
@@ -712,22 +712,21 @@ echo getHeader('Medical certificate form', $s_menu, $js, true);
     <table class="docForm">
         <tr>
             <td>Doctors Name:</td>
-            <td class="field">'. $doctorName .'</td>
+            <td class="field"><?php echo $doctorName;?></td>
             </tr>
         <tr>
             <td>Doctors Location:</td>
-            <td class="field">
-                '. $doctorLocation .'
+            <td class="field"><?php echo $doctorLocation;?>
             </td>
         </tr>
         <tr>
             <td>Please tick if you agree to be the nominated treating doctor for the ongoing management of this worker\'s injury and return to work:</td>
             <td>
                 <label class="radio">
-                    <input type="radio" required class="required valid" name="Commit" value="Yes" <?php echo (strstr($a_medical_cert->doctor_agrees,"Yes")?"checked='checked'":""); ?>/>Yes
+                    <input type="radio" required class="required valid" name="Commit" value="Yes" <?php echo (strstr($a_patient->doctor_agrees,"Yes")?"checked='checked'":""); ?>/>Yes
                 </label>
                 <label class="radio">
-                    <input type="radio" required class="required valid" name="Commit" value="No" <?php echo (strstr($a_medical_cert->doctor_agrees,"No")?"checked='checked'":""); ?>/>No
+                    <input type="radio" required class="required valid" name="Commit" value="No" <?php echo (strstr($a_patient->doctor_agrees,"No")?"checked='checked'":""); ?>/>No
                 </label>
             </td>
         </tr>
@@ -735,10 +734,10 @@ echo getHeader('Medical certificate form', $s_menu, $js, true);
             <td>PDF options:</td>
             <td>
                 <label class="radio">
-                    <input type="radio" required class="required valid" name="Commit" value="Yes" <?php echo (strstr($a_medical_cert->doctor_agrees,"all")?"checked='checked'":""); ?>/>Output the whole form.
+                    <input type="radio" required class="required valid" name="output" value="Yes" <?php echo (strstr("all","all")?"checked='checked'":""); ?>/>Output the whole form.
                 </label>
                 <label class="radio">
-                    <input type="radio" required class="required valid" name="Commit" value="No" <?php echo (strstr($a_medical_cert->doctor_agrees,"page2")?"checked='checked'":""); ?>/>Output just page 2 of the form.
+                    <input type="radio" required class="required valid" name="output" value="No" <?php echo (strstr("all","page2")?"checked='checked'":""); ?>/>Output just page 2 of the form.
                 </label>
             </td>
         </tr>
