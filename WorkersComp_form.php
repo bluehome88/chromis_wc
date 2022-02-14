@@ -3,6 +3,10 @@ $b_user_area = 1;
 require_once('../config.php');
 require_once(ROOT_FOLDER . 'lib/header_doc.php');
 
+$js  = '    <script src="./scripts/wc-form.js"></script>' . "\n";
+$js .= '    <script src="./scripts/jquery.validate.min.js"></script>' . "\n";
+$js .= '    <script src="./scripts/jqEasyCharCounter/jquery.jqEasyCharCounter.min.js"></script>' . "\n";
+
 $a_patient =  new patient;
 if(isset($_GET['id'])) {
     $a_patient->id = (int)$_GET['id'];
@@ -21,8 +25,7 @@ echo getHeader('Client record', $s_menu, $js);
           <tr>
             <td width="128">Examination date</td>
             <td width="389" >
-                <input name="EXDate" value="<?php echo ($a_patient->examdate!='0000-00-00'?date("d/m/Y",convertToDate($a_patient->examdate)):date("d/m/Y")); ?>" >
-              <input type=button value="select" onclick="displayDatePicker('EXDate', false, 'dmy', '/');"></td>
+              <input name="EXDate" value="<?php echo ($a_patient->examdate!='0000-00-00'?date("d/m/Y",convertToDate($a_patient->examdate)):date("d/m/Y")); ?>" type="text" class="date" placeholder="dd/mm/yyyy"/>
           </tr>
           <tr>
             <td width="128">Claim no.</td>
@@ -31,8 +34,7 @@ echo getHeader('Client record', $s_menu, $js);
           <tr>
             <td width="128"><acronym title="Date of injury">DOI</acronym></td>
             <td width="389" >
-                <input name="injury_dateof" value="<?php echo ($a_patient->injury_dateof!='0000-00-00'?date("d/m/Y",convertToDate($a_patient->injury_dateof)):''); ?>" >
-                <input type=button value="select" onclick="displayDatePicker('injury_dateof', false, 'dmy', '/');"></td>
+                <input name="injury_dateof" value="<?php echo ($a_patient->injury_dateof!='0000-00-00'?date("d/m/Y",convertToDate($a_patient->injury_dateof)):''); ?>" type="text" class="date" placeholder="dd/mm/yyyy"/>
           </tr>
           <tr>
             <td width="128">Medicare number</td>
@@ -41,8 +43,7 @@ echo getHeader('Client record', $s_menu, $js);
           <tr>
             <td width="128">Date first seen for this injury / disease</td>
             <td width="389" >
-                <input name="date_first_seen" value="<?php echo ($a_patient->date_first_seen!='0000-00-00'?date("d/m/Y",convertToDate($a_patient->date_first_seen)):''); ?>" >
-                <input type=button value="select" onclick="displayDatePicker('date_first_seen', false, 'dmy', '/');"></td>
+                <input name="date_first_seen" value="<?php echo ($a_patient->date_first_seen!='0000-00-00'?date("d/m/Y",convertToDate($a_patient->date_first_seen)):''); ?>" type="text" class="date" placeholder="dd/mm/yyyy"/>
           </tr>
         </table>
 
@@ -77,8 +78,11 @@ echo getHeader('Client record', $s_menu, $js);
                   <option value="NT"  <?php echo (($a_patient->state=="NT")?"selected=\"selected\"":""); ?>>NT</option>
                 </select>
               </label>
-              Postcode
-              <input type="text" name="PCode" size="4"  value="<?php echo $a_patient->postcode?>" /></td>
+          </tr>
+          <tr>
+            <td width="128">Postcode</td>
+            <td><label>
+              <input type="text" name="PCode" size="4"  value="<?php echo $a_patient->postcode?>" /></label></td>
           </tr>
           <tr>
             <td width="128">Phone (W)</td>
@@ -92,7 +96,7 @@ echo getHeader('Client record', $s_menu, $js);
             <td width="128">Date of birth</td>
             <td width="389">
 <?php
-    list($db_year, $db_month, $db_day) = split('[/.-]', $a_patient->dob);
+    list($db_year, $db_month, $db_day) = explode('-', $a_patient->dob);
 ?>
                 <select name="day" id="day">
                   <?php for($a=1; $a<=31;$a++) echo '<option value="'.$a.'" '.(($db_day=="$a")?"selected=\"selected\"":"").'>'.$a.'</option>'; ?>
@@ -152,8 +156,11 @@ echo getHeader('Client record', $s_menu, $js);
                   <option value="NT"  <?php echo (($a_patient->emp_state=="NT")?"selected=\"selected\"":""); ?>>NT</option>
                 </select>
               </label>
-              Postcode
-              <input type="text" name="EmpPCode" size="4"  value="<?php echo $a_patient->emp_postcode?>" /></td>
+          </tr>
+          <tr>
+            <td width="128">Postcode</td>
+            <td><label>
+              <input type="text" name="EmpPCode" size="4"  value="<?php echo $a_patient->emp_postcode?>" /></label></td>
           </tr>
           <tr>
             <td width="200">&nbsp;</td>
