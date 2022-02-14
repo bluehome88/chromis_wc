@@ -3,10 +3,6 @@ $b_admin_area = 1;
 require_once('../config.php');
 require_once( ROOT_FOLDER . 'lib/header_doc.php');
 require_once( ROOT_FOLDER . 'lib/Location.php');
-use PFBC\Form;
-use PFBC\Element;
-use PFBC\Validation;
-require_once(ROOT_FOLDER . 'lib/pfbc3.1-php5.3/PFBC/Form.php');
 
 $o_l = new Location;
 if( isset($_REQUEST['a'])) {
@@ -47,158 +43,63 @@ $js  = '    <script src="./scripts/jquery.validate.min.js"></script>' . "\n";
 $js .= '    <script src="./scripts/location-form.js"></script>' . "\n";
 
 echo getHeader('Location add / edit interface', $s_menu, $js, true);
+?>
+<form action="locations-edit.php" id="location" method="post" class="form-horizontal" novalidate="novalidate">
+    <input name='i_LocationId' value='<?php echo $o_l->i_LocationId;?>' type=hidden />
+    <input name='a' value='i' type=hidden />
 
-$form = new Form('location');
-$form->configure(array(
-    'prevent' => array('bootstrap', 'jQuery')
-));
-
-$form->addElement(new Element\Hidden('i_LocationId', $o_l->i_LocationId));
-$form->addElement(new Element\Hidden('a', 'i'));
-$form->addElement(new Element\HTML('<h6>&nbsp;</h6>'));
-
-$form->addElement(new Element\HTML('
     <table class="docForm">
-    <tr>
-        <td>Location Name:</td>
-        <td>'));
+        <tr>
+            <td>Location Name:</td>
+            <td>
+                <input type="text" name="s_LocationName" value="<?php echo $o_l->s_LocationName; ?>" required="" class="required valid" id="location-element-4">
+            </td>
+        </tr>
+        <tr>
+            <td>Location Address:</td>
+            <td>
+                <input type="text" name="s_LocationAddress" value="<?php echo $o_l->s_LocationAddress; ?>" required="" class="required valid" id="location-element-6">
+            </td>
+        </tr>
+        <tr>
+            <td>Location Suburb:</td>
+            <td>
+                <input type="text" name="s_LocationSuburb" value="<?php echo $o_l->s_LocationSuburb; ?>" required="" class="required valid" id="location-element-8">
+            </td>
+        </tr>
+        <tr>
+            <td>Location Postcode:</td>
+            <td>
+                <input type="text" name="s_LocationPostcode" value="<?php echo $o_l->s_LocationPostcode; ?>" required="" class="required number" id="location-element-10">
+            </td>
+        </tr>
+        <tr>
+            <td>Location State:</td>
+            <td>
+                <input type="text" name="s_LocationState" value="<?php echo $o_l->s_LocationState; ?>" required="" class="required" id="location-element-12">
+            </td>
+        </tr>
+        <tr>
+            <td>Location Phone:</td>
+            <td>
+                <input type="text" name="s_LocationPhone" value="<?php echo $o_l->s_LocationPhone; ?>" required="" class="required" id="location-element-14">
+            </td>
+        </tr>
+        <tr>
+            <td>Location Fax:</td>
+            <td>
+                <input type="text" name="s_LocationFax" value="<?php echo $o_l->s_LocationFax; ?>" required="" class="required" id="location-element-16">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <label><button type="submit" class="btn btn-primary" id="location-element-18" value="Save Location">Save Location</button>
+            </td>
+        </tr>
+    </table>
+</form>
 
-$form->addElement(new Element\Textbox(
-    '',
-    's_LocationName',
-    array(
-        'cols'=>40,
-        'value'=>$o_l->s_LocationName,
-        'required' => 'required',
-        'class' => 'required'
-    )
-));
 
-$form->addElement(new Element\HTML('
-        </td>
-    </tr>
-    <tr>
-        <td>Location Address:</td>
-        <td>
-'));
-
-$form->addElement(new Element\Textbox(
-    '',
-    's_LocationAddress',
-    array(
-        'cols'=>50,
-        'value'=>$o_l->s_LocationAddress,
-        'required' => 'required',
-        'class' => 'required'
-    )
-));
-
-$form->addElement(new Element\HTML('
-        </td>
-    </tr>
-    <tr>
-        <td>Location Suburb:</td>
-        <td>
-'));
-
-$form->addElement(new Element\Textbox(
-    '',
-    's_LocationSuburb',
-    array(
-        'cols'=>40,
-        'value'=>$o_l->s_LocationSuburb,
-        'required' => 'required',
-        'class' => 'required'
-    )
-));
-
-$form->addElement(new Element\HTML('
-        </td>
-    </tr>
-    <tr>
-        <td>Location Postcode:</td>
-        <td>
-'));
-
-$form->addElement(new Element\Textbox(
-    '',
-    's_LocationPostcode',
-    array(
-        'cols'=>30,
-        'value'=>$o_l->s_LocationPostcode,
-        'required' => 'required',
-        'class' => 'required number'
-    )
-));
-
-$form->addElement(new Element\HTML('
-        </td>
-    </tr>
-    <tr>
-        <td>Location State:</td>
-        <td>
-'));
-
-$form->addElement(new Element\Textbox(
-    '',
-    's_LocationState',
-    array(
-        'cols'=>40,
-        'value'=>$o_l->s_LocationState,
-        'required' => 'required',
-        'class' => 'required'
-    )
-));
-
-$form->addElement(new Element\HTML('
-        </td>
-    </tr>
-    <tr>
-        <td>Location Phone:</td>
-        <td>
-'));
-
-$form->addElement(new Element\Textbox(
-    '',
-    's_LocationPhone',
-    array(
-        'cols'=>40,
-        'value'=>$o_l->s_LocationPhone,
-        'required' => 'required',
-        'class' => 'required'
-    )
-));
-
-$form->addElement(new Element\HTML('
-        </td>
-    </tr>
-    <tr>
-        <td>Location Fax:</td>
-        <td>
-'));
-
-$form->addElement(new Element\Textbox(
-    '',
-    's_LocationFax',
-    array(
-        'cols'=>40,
-        'value'=>$o_l->s_LocationFax,
-        'required' => 'required',
-        'class' => 'required'
-    )
-));
-
-$form->addElement(new Element\HTML('
-        </td>
-    </tr>
-    <tr>
-        <td>&nbsp;</td>
-        <td>
-'));
-
-$form->addElement(new Element\Button(' Save Location '));
-$form->addElement(new Element\HTML('</td></tr></table><p>&nbsp;</p>'));
-
-$form->render();
-
+<?php
 echo getFooter();
