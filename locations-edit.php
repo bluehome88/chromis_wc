@@ -1,6 +1,6 @@
 <?php
 $b_admin_area = 1;
-require_once('../config.php');
+require_once('../../etc/config.php');
 require_once( ROOT_FOLDER . 'lib/header_doc.php');
 require_once( ROOT_FOLDER . 'lib/Location.php');
 

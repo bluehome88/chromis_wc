@@ -1,5 +1,5 @@
 <?php
-require_once('../config.php');
+require_once('../../etc/config.php');
 require_once( ROOT_FOLDER . 'lib/header_doc.php');
 
 //  Form 2 - Processing WC form from doctor

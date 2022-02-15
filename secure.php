@@ -1,5 +1,5 @@
 <?php
-    require_once('../config.php');
+    require_once('../../etc/config.php');
 
     // if( $_SERVER['HTTPS'] != "on"
     //     && TESTING == false
