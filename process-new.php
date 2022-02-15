@@ -37,7 +37,7 @@ if( ISSET($_POST['mode']) && $_POST['mode']=='form2') {
     $a_medical_cert->fit_for_work_status = $_POST['WFit'];
     $a_medical_cert->exam_date           = re_format_date($_POST['exam_date']);
     $a_medical_cert->manag_plan          = $_POST['MPlan'];
-    $a_medical_cert->treat_rev_date      = re_format_date($_POST['TReview']);
+    // $a_medical_cert->treat_rev_date      = re_format_date($_POST['TReview']);
     $a_medical_cert->unfitfrom           = re_format_date($_POST['UnfitFrom']);
     $a_medical_cert->unfitto             = re_format_date($_POST['UnfitTo']);
     $a_medical_cert->suitfrom            = re_format_date($_POST['SuitFrom']);
@@ -51,7 +51,7 @@ if( ISSET($_POST['mode']) && $_POST['mode']=='form2') {
     $a_medical_cert->has_cap_for_sittingupto    = $_POST['i5'];
     $a_medical_cert->has_cap_for_standingupto   = $_POST['i9'];
     $a_medical_cert->has_cap_for_travellingupto = $_POST['i7'];
-    $a_medical_cert->has_cap_for_keyingupto     = $_POST['i6'];
+    // $a_medical_cert->has_cap_for_keyingupto     = $_POST['i6'];
     $a_medical_cert->other_restrictions         = $_POST['OTHER_RESTRICTIONS'];
     $a_medical_cert->other_restrictions_details = '';
     if(is_array($_POST['OTH'])){
