@@ -567,7 +567,7 @@ echo getHeader('Medical certificate form', $s_menu, $js, true);
             <td>Other (please specify) eg psychological considerations, keep wound clean and dry.</td>
             <td>
                 <label class="radio">
-                    <input type="radio" required class="required valid" name="OTHER_RESTRICTIONS" value="OTHER" <?php echo (strstr($a_medical_cert->other_restrictions,"OTHER")?"checked='checked'":""); ?>/>Yes
+                    <input type="radio" name="OTHER_RESTRICTIONS" value="OTHER" <?php echo (strstr($a_medical_cert->other_restrictions,"OTHER")?"checked='checked'":""); ?>/>Yes
                 </label>
                 <label class="radio">
                     <input type="radio" required class="required valid" name="OTHER_RESTRICTIONS" value="No" <?php echo (strstr($a_medical_cert->other_restrictions,"No")?"checked='checked'":""); ?>/>No
@@ -664,7 +664,7 @@ echo getHeader('Medical certificate form', $s_menu, $js, true);
             <tr>
                 <td class="title">Other</td>
                 <td class="field">
-                    <textarea rows="4" name="OTH_TXT" cols="40" required="" class="sml otext" id="DR_WCMC-element-67"><?php echo $a_medical_cert->other_restrictions_other;?></textarea>
+                    <textarea rows="4" name="OTH_TXT" cols="40" class="sml otext" id="DR_WCMC-element-67"><?php echo $a_medical_cert->other_restrictions_other;?></textarea>
                     <p><b>Historic information from last certificate:</b><br />&quot;<?php echo $a_medical_cert->other_restrictions_other; ?>&quot;</p>
                 </td>
             </tr>
@@ -691,7 +691,7 @@ echo getHeader('Medical certificate form', $s_menu, $js, true);
         <tr>
             <td>Comments:</td>
             <td>
-                <textarea rows="4" name="comment" cols="40" required="" class="sml" id="DR_WCMC-element-71"><?php echo $a_medical_cert->comment;?></textarea>
+                <textarea rows="4" name="comment" cols="40" class="sml" id="DR_WCMC-element-71"><?php echo $a_medical_cert->comment;?></textarea>
 
             </td>
         </tr>
@@ -734,10 +734,10 @@ echo getHeader('Medical certificate form', $s_menu, $js, true);
             <td>PDF options:</td>
             <td>
                 <label class="radio">
-                    <input type="radio" required class="required valid" name="output" value="Yes" <?php echo (strstr("all","all")?"checked='checked'":""); ?>/>Output the whole form.
+                    <input type="radio" required class="required valid" name="output" value="all" <?php echo (strstr("all","all")?"checked='checked'":""); ?>/>Output the whole form.
                 </label>
                 <label class="radio">
-                    <input type="radio" required class="required valid" name="output" value="No" <?php echo (strstr("all","page2")?"checked='checked'":""); ?>/>Output just page 2 of the form.
+                    <input type="radio" required class="required valid" name="output" value="page2" <?php echo (strstr("all","page2")?"checked='checked'":""); ?>/>Output just page 2 of the form.
                 </label>
             </td>
         </tr>
