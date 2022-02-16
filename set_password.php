@@ -31,35 +31,45 @@ require_once(ROOT_FOLDER . 'lib/header_doc.php');
         }
     }
 
-$js = '<script type="text/javascript">
-    function checkFields()
-    {
-        if( $("#existingPassword").val() == "" ){ alert( "For security reasons, you must provide your existing password" ); return false; }
-        if( $("#newPassword").val().length < 6 ){ alert( "For security reasons, passwords must be a minimum of 6 characters" ); return false; }
-        if( $("#newPassword").val() != $("#confirmPassword").val()){ alert( "The new password entered does not match the confirmation. Please retype the password in both fields." ); return false; }
-        if( $("#existingPassword").val() == $("#newPassword").val()){ alert( "Your new password cannot be the same as your old one." ); return false; }
-        return true;
-    }
-</script>';
+$js = '
+    <script src="./scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#SetPasswordForm").validate({
+              submitHandler: function(form) {
+                if( $("#existingPassword").val() == $("#newPassword").val()){
+                    $(".error-text").html("Your new password cannot be the same as your old one.");
+                    return false;
+                }
+                if( $("#newPassword").val() != $("#confirmPassword").val()){ 
+                    $(".error-text").html( "The new password entered does not match the confirmation. Please retype the password in both fields." ); 
+                    return false; 
+                }
+                $(form).submit();
+              }
+            });
+        });
+    </script>';
+
 echo getHeader('Password management', $s_menu, $js);
 ?>
     <div class="error-text"><?php echo $errorMsg?></div>
 
-      <form action="set_password.php" method="post" name="SetPasswordForm" onsubmit="return checkFields()">
+      <form action="set_password.php" method="post" name="SetPasswordForm" id="SetPasswordForm">
       <h6>Change  password for <span class="nav_ur_here"><?php echo $user['Firstname']." ".$user['Lastname']?></span></h6>
 
         <table border="0" cellspacing="0" cellpadding="5" width="100%">
           <tr>
-            <td>Current password</td>
-            <td><input type="password" id="existingPassword" name="existingPassword" size="30" value="" /></td>
+            <td width="50">Current password</td>
+            <td width="50"><input type="password" id="existingPassword" name="existingPassword" value="" required class="required valid"/></td>
           </tr>
           <tr>
             <td>New password</td>
-            <td><input type="password" id="newPassword" name="newPassword"  size="30" value=""></td>
+            <td><input type="password" id="newPassword" name="newPassword" value="" required class="required"></td>
           </tr>
           <tr>
             <td>Confirm new password</td>
-            <td><input type="password" id="confirmPassword" name="confirmPassword"  size="30" value=""></td>
+            <td><input type="password" id="confirmPassword" name="confirmPassword" value="" required class="required"></td>
           </tr>
           <tr>
             <td>&nbsp;</td>
