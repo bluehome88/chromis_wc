@@ -1,5 +1,5 @@
 <?php
-require_once('../config.php');
+require_once('./config.php');
 require_once(ROOT_FOLDER . 'lib/header_doc.php');
 
 if(isset($_POST['isnew'])) {
