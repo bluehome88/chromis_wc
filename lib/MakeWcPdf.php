@@ -310,6 +310,9 @@ trailer
             rename(PDF_WRITE_FOLDER . $s_file_name. '.pdf', PDF_WRITE_FOLDER . $s_file_name. '.tmp.pdf');
             $r = exec(PDFTK_PATH .'pdftk '. PDF_WRITE_FOLDER . $s_file_name. '.tmp.pdf cat 2-2 output '. PDF_WRITE_FOLDER . $s_file_name. '.pdf');
         }
+
+        unlink( PDF_WRITE_FOLDER . $s_fdf_name. '.fdf' );
+
         return $r;
     }
 

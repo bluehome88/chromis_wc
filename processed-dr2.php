@@ -2,6 +2,7 @@
 require_once('./config.php');
 require_once( ROOT_FOLDER . 'lib/header_doc.php');
 require_once( ROOT_FOLDER . 'lib/MakeWcPdf.php' );
+require_once( ROOT_FOLDER . 'lib/MakeRTF.php' );
 
 if( isset($_GET['i']) && isset($_GET['j']) ){
     $a_medical_cert     =  new MedicalCert;
@@ -23,6 +24,7 @@ if( isset($_GET['i']) && isset($_GET['j']) ){
         false,
         $_SESSION['output'] != 'all' ? true : false
     );
+    generateRTF( $s_file_name, $a_patient, $a_medical_cert, $_SESSION['User'] );
     exit();
 }
 
