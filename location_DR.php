@@ -42,7 +42,7 @@ if( !( isset($_POST['Surname']) && $_POST['Surname'] != "" )) {
     $s_checked = 'checked="checked"';
     if( $stmt->num_rows > 0 ) {
         while($stmt->fetch()) {
-                echo '<div><input type="radio" name="LocationId" id="a'. $locationId .'" value="'. $locationId .'" '. $s_checked .' /><label for="a'. $locationId .'">&nbsp; '. $locationName .'</label></div>';
+                echo '<div><input type="radio" name="LocationId" id="a'. $locationId .'" value="'. $locationId .'" '. $s_checked .' /><label style="display:inline-block;" for="a'. $locationId .'">&nbsp; '. $locationName .'</label></div>';
                 $s_checked = '';
         }
     }

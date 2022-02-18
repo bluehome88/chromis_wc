@@ -31,7 +31,7 @@ if( ISSET($_POST['mode']) && $_POST['mode']=='form1') {
     $a_patient->emp_postcode=$_POST['EmpPCode'];
 
     $a_patient->injury_dateof = re_format_date($_POST['injury_dateof']);
-    $a_patient->date_first_seen = re_format_date($_POST['date_first_seen']);
+    $a_patient->date_first_seen = $_POST['date_first_seen'] ? re_format_date($_POST['date_first_seen']) : "0000-00-00";
     $a_patient->medicare_no =  $_POST['medicare_no'];
 
     $a_patient->Save();
