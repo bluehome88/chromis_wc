@@ -1,4 +1,9 @@
 <?php 
+if( 0 ){
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+	error_reporting(E_ALL);
+}
 require_once( __DIR__ . '/PHPRtfLite.php');
 PHPRtfLite::registerAutoloader();
 
@@ -9,10 +14,10 @@ function renderDate( $arrDate ){
 	if( isset($arrDate) && count($arrDate) ){
 		$textField = $sect->addTextField($value_font);
 		$textField->setDefaultValue($arrDate[2]);
-		$sect->writeText(' / ', $label_font);
+		$sect->writeText('/', $label_font);
 		$textField = $sect->addTextField($value_font);
 		$textField->setDefaultValue($arrDate[1]);
-		$sect->writeText(' / ', $label_font);
+		$sect->writeText('/', $label_font);
 		$textField = $sect->addTextField($value_font);
 		$textField->setDefaultValue($arrDate[0]);
 	}
@@ -30,6 +35,9 @@ function renderTextField( $txt_value, $break = true ){
 		breakLine();
 
 	$textField = $sect->addTextField( $value_font );
+	if( !$txt_value )
+		$txt_value = "___";
+
 	$textField->setDefaultValue( $txt_value );
 
 	if( $break)
@@ -284,10 +292,10 @@ function generateRTF( $s_file_name, $a_patient, $a_medical_cert, $a_user ){
 	$textField = $sect->addTextField($value_font);
 	renderDate( $a_inj_date);
 
-	breakLine(3);
+	breakLine(2);
 	$sect->writeText('Shaded areas to be completed for initial certificate only', $label_font);
 
-	breakLine(2);
+	breakLine();
 	$sect->writeText('Patient was first seen at this practice/hospital for this injury/disease on', $label_font);
 	$textField = $sect->addTextField($value_font);
 	renderDate( $a_first_seen_date );
@@ -420,46 +428,48 @@ function generateRTF( $s_file_name, $a_patient, $a_medical_cert, $a_user ){
 	$sect->writeText('No', $label_font);
 
 
-	breakLine(2);
+	breakLine(3);
 	$sect->writeText('TREATING MEDICAL PRACTITIONER DETAILS<br>', $subtitle_font);
 
 	breakLine();
-	$sect->writeText('I certify that I am the ', $label_font);
+	$sect->writeText('I certify that I am the', $label_font);
 	$checkbox = $sect->addCheckbox();
 	if( $a_patient->doctor_agrees == 'Yes')
 		$checkbox->setChecked();
-	$sect->writeText(' nominated treating doctor or ', $label_font);
+	$sect->writeText('nominated treating doctor or ', $label_font);
 	$checkbox = $sect->addCheckbox();
 	if( $a_patient->doctor_agrees == 'No')
 		$checkbox->setChecked();
-$sect->writeText(' treating specialist (please tick) and I have examined this patient. The information and medical opinions contained in this certificate of capacity are, to the best of my knowledge, true and correct.', $label_font);
+	$sect->writeText('treating specialist (please tick) and I have examined this patient. The information and medical opinions contained in this certificate of capacity are, to the best of my knowledge, true and correct.', $label_font);
 
 	breakLine(2);
 	$sect->writeText('Signature<tab><tab>Date(DD/MM/YYYY)<br><tab><tab>', $label_font);
 	renderDate( $a_int_date2 );
 
-	breakLine(2);
+	breakLine(4);
 	$sect->writeText('Name    ', $label_font);
 	renderTextField( $a_patient->doctor_name .' - '. CHROMIS_STAMP, false );
 
 	breakLine(2);
-	$sect->writeText('Address    ', $label_font);
+	$sect->writeText('Address (must be residential address – not PO Box)  ', $label_font);
 	renderTextField( CHROMIS_ADDRESS, false );
 
 	breakLine(2);
-	$sect->writeText('Suburb<tab>State<tab>Postcode<br>', $label_font);
+	$sect->writeText('Suburb    ', $label_font);
 	renderTextField( $a_user['LocationSuburb'], false );
-	$sect->writeText('<tab>', $label_font);
+
+	$sect->writeText('    State    ', $label_font);
 	renderTextField( $a_user['LocationState'], false );
-	$sect->writeText('<tab>', $label_font);
+
+	$sect->writeText('    PostCode    ', $label_font);
 	renderTextField( $a_user['LocationPostcode'], false );
-	
+
 	breakLine(2);
-	$sect->writeText('Telephone Number<tab>Provide Number', $label_font);
-	breakLine();
+	$sect->writeText('Telephone Number    ', $label_font);
 	renderTextField( CHROMIS_PHONE, false );
-	$sect->writeText('<tab>', $label_font);
-	renderTextField( trim($a_user['MPN']), false );
+
+	$sect->writeText('    Provide Number    ', $label_font);
+	renderTextField(trim($a_user['MPN']), false );
 
 	breakLine(2);
 	$checkbox = $sect->addCheckbox();
@@ -485,7 +495,7 @@ $sect->writeText(' treating specialist (please tick) and I have examined this pa
 	renderDate( $a_dob );
 	
 	breakLine(2);
-	$sect->writeText('Worker`s Address', $label_font);
+	$sect->writeText('Worker`s Address    ', $label_font);
 	renderTextField( implode(', ', $a_patient_address),false );
 
 	breakLine(2);
@@ -497,11 +507,12 @@ $sect->writeText(' treating specialist (please tick) and I have examined this pa
 	breakLine(2);
 	$sect->writeText('engaged in any form of paid employment, self employment or voluntary work for which I have received or am entitled to receive payment in money or otherwise since the last certificate was provided, that I have not yet declared to the insurer.<br>', $label_font);
 	$sect->writeText('If so, please provide details below.', $label_font);
-	breakLine(5);
+	breakLine(10);
 	
-	$sect->writeText('I declare that the details I have given on this declaration are true and correct, knowing that false declarations are punishable by law.<br>', $label_font);
+	$sect->writeText('I declare that the details I have given on this declaration are true and correct, knowing that false declarations are punishable by law.', $label_font);
+	breakLine(2);
 	$sect->writeText('Signature <tab>Date (DD/MM/YYYY)', $label_font);
-	breakLine(3);
+	breakLine(5);
 
 	// Footer
 	$sect->writeText('Catalogue No. SIRA08719<br>', new $footer_font);
