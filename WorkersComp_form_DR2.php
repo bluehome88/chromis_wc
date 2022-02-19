@@ -170,7 +170,7 @@ echo getHeader('Medical certificate form', $s_menu, $js, true);
                         <input type="radio" required class="required valid" name="Contribute" value="No" <?php echo (strstr($a_medical_cert->work_is_factor,"No")?"checked='checked'":""); ?>/>No
                     </label>
                     <label class="radio">
-                        <input type="radio" required class="required valid" name="Contribute" value="Unknown" <?php echo (strstr($a_medical_cert->work_is_factor,"Unknown")?"checked='checked'":""); ?>/>Unknown
+                        <input type="radio" required class="required valid" name="Contribute" value="Unknown" <?php echo (strstr($a_medical_cert->work_is_factor,"Unknown") || !$a_medical_cert->work_is_factor ?"checked='checked'":""); ?>/>Unknown
                     </label>
                 </td>
             </tr>

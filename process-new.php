@@ -42,7 +42,7 @@ if( ISSET($_POST['mode']) && $_POST['mode']=='form2') {
     $a_medical_cert->unfitto             = re_format_date($_POST['UnfitTo']);
     $a_medical_cert->suitfrom            = re_format_date($_POST['SuitFrom']);
     $a_medical_cert->suitto              = re_format_date($_POST['SuitTo']);
-    $a_medical_cert->modfrom             = re_format_date($_POST['ModFrom']);
+    $a_medical_cert->modfrom             = isset( $_POST['ModFrom'] ) ? re_format_date($_POST['ModFrom']) : NULL;
     $a_medical_cert->assreq              = $_POST['AssReq'];
     $a_medical_cert->has_cap_for_duration       = $_POST['i1'];
     $a_medical_cert->has_cap_for_duration_days  = $_POST['i2'];
