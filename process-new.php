@@ -51,7 +51,7 @@ if( ISSET($_POST['mode']) && $_POST['mode']=='form2') {
     $a_medical_cert->has_cap_for_sittingupto    = $_POST['i5'];
     $a_medical_cert->has_cap_for_standingupto   = $_POST['i9'];
     $a_medical_cert->has_cap_for_travellingupto = $_POST['i7'];
-    // $a_medical_cert->has_cap_for_keyingupto     = $_POST['i6'];
+    $a_medical_cert->has_cap_for_keyingupto     = $_POST['i6'];
     $a_medical_cert->other_restrictions         = $_POST['OTHER_RESTRICTIONS'];
     $a_medical_cert->other_restrictions_details = '';
     if(is_array($_POST['OTH'])){

@@ -503,7 +503,7 @@ echo getHeader('Medical certificate form', $s_menu, $js, true);
         <tr>
             <td>Bending/twisting/squatting ability</td>
             <td class="field">
-                <select name="i4" class="unfisuit" id="DR_WCMC-element-55">
+                <select name="i6" class="unfisuit" id="DR_WCMC-element-55">
                     <?php 
                         $a_options = array(
                             'Unrestricted'=>'Unrestricted',
