@@ -27,12 +27,12 @@ function userLookup(inputString) {
 }
 
 function adminLookup(inputString) {
-    if(inputString.length == 0) {
+    if (inputString.length == 0) {
         // Hide the suggestion box.
         $('#suggestions').slideUp();
     } else {
-        $.post("rpcUser2.php", {queryString: ""+inputString+""}, function(data){
-            if(data.length > 0) {
+        $.post("rpcUser.php", { queryString: "" + inputString + "" }, function (data) {
+            if (data.length > 0) {
                 $('#suggestions').slideDown();
                 $('#autoSuggestionsList').html(data);
             }

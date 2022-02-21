@@ -1,6 +1,6 @@
 <?php
 require_once('./config.php');
-require_once( ROOT_FOLDER . 'lib/header_doc.php');
+require_once(ROOT_FOLDER . 'lib/header_doc.php');
 
 //  Form 2 - Processing WC form from doctor
 // patient record -- medicare number
@@ -13,9 +13,9 @@ require_once( ROOT_FOLDER . 'lib/header_doc.php');
 // [comment] => test //comment
 // referral
 
-if( ISSET($_POST['mode']) && $_POST['mode']=='form2') {
+if (isset($_POST['mode']) && $_POST['mode'] == 'form2') {
     $a_patient =  new Patient;
-    $a_patient->id= (int)$_POST['paitentid'];
+    $a_patient->id = (int)$_POST['paitentid'];
     $a_patient->Load();
 
     $a_patient->cons_status     = $_POST['Consult'];
@@ -35,15 +35,15 @@ if( ISSET($_POST['mode']) && $_POST['mode']=='form2') {
     $a_medical_cert->diagnosis           = $_POST['diagnosis'];
     $a_medical_cert->work_is_factor      = $_POST['Contribute'];
     $a_medical_cert->fit_for_work_status = $_POST['WFit'];
-    $a_medical_cert->exam_date           = re_format_date($_POST['exam_date']);
-    $a_medical_cert->manag_plan          = $_POST['MPlan'];
+    $a_medical_cert->exam_date           = isset($_POST['exam_date']) ? re_format_date($_POST['exam_date']) : "0000-00-00";
+    $a_medical_cert->manag_plan          = isset($_POST['MPlan']) ? re_format_date($_POST['MPlan']) : "0000-00-00";
     // $a_medical_cert->treat_rev_date      = re_format_date($_POST['TReview']);
-    $a_medical_cert->unfitfrom           = re_format_date($_POST['UnfitFrom']);
-    $a_medical_cert->unfitto             = re_format_date($_POST['UnfitTo']);
-    $a_medical_cert->suitfrom            = re_format_date($_POST['SuitFrom']);
-    $a_medical_cert->suitto              = re_format_date($_POST['SuitTo']);
-    $a_medical_cert->modfrom             = isset( $_POST['ModFrom'] ) ? re_format_date($_POST['ModFrom']) : NULL;
-    $a_medical_cert->assreq              = $_POST['AssReq'];
+    $a_medical_cert->unfitfrom           = isset($_POST['UnfitFrom']) && $_POST['UnfitFrom'] ? re_format_date($_POST['UnfitFrom']) : "0000-00-00";
+    $a_medical_cert->unfitto             = isset($_POST['UnfitTo']) && $_POST['UnfitTo'] ? re_format_date($_POST['UnfitTo']) : "0000-00-00";
+    $a_medical_cert->suitfrom             = isset($_POST['SuitFrom']) && $_POST['SuitFrom'] ? re_format_date($_POST['SuitFrom']) : "0000-00-00";
+    $a_medical_cert->suitto             = isset($_POST['SuitTo']) && $_POST['SuitTo'] ? re_format_date($_POST['SuitTo']) : "0000-00-00";
+    $a_medical_cert->modfrom             = isset($_POST['ModFrom']) && $_POST['ModFrom'] ? re_format_date($_POST['ModFrom']) : "0000-00-00";
+    $a_medical_cert->assreq              = isset($_POST['AssReq']) ? $_POST['AssReq'] : NULL;
     $a_medical_cert->has_cap_for_duration       = $_POST['i1'];
     $a_medical_cert->has_cap_for_duration_days  = $_POST['i2'];
     $a_medical_cert->has_cap_for_liftingupto    = $_POST['i3'];
@@ -54,11 +54,11 @@ if( ISSET($_POST['mode']) && $_POST['mode']=='form2') {
     $a_medical_cert->has_cap_for_keyingupto     = $_POST['i6'];
     $a_medical_cert->other_restrictions         = $_POST['OTHER_RESTRICTIONS'];
     $a_medical_cert->other_restrictions_details = '';
-    if(is_array($_POST['OTH'])){
-        $a_medical_cert->other_restrictions_details = implode(", ",$_POST['OTH']);
+    if (is_array($_POST['OTH'])) {
+        $a_medical_cert->other_restrictions_details = implode(", ", $_POST['OTH']);
     }
     $a_medical_cert->other_restrictions_other = $_POST['OTH_TXT'];
-    $a_medical_cert->fitness_review_date      = re_format_date($_POST['FReview']);
+    $a_medical_cert->fitness_review_date      = isset($_POST['FReview']) && $_POST['FReview'] ? re_format_date($_POST['FReview']) : "0000-00-00";
     $a_medical_cert->pre_existing_factors     = $_POST['pre_existing_factors'];
     $a_medical_cert->post_desc                = $_POST['post_desc'];
     $a_medical_cert->est_return_to_work       = $_POST['est_return_to_work'];
@@ -71,6 +71,6 @@ if( ISSET($_POST['mode']) && $_POST['mode']=='form2') {
     $_SESSION['output'] = '';
     $_SESSION['output'] = $_POST['output'];
 
-    header('Location: '. SECURE_URL . DOC_PROCESSED .'?i=' . $a_medical_cert->id );
+    header('Location: ' . SECURE_URL . DOC_PROCESSED . '?i=' . $a_medical_cert->id);
     exit();
 }
