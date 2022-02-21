@@ -235,14 +235,14 @@ function generateRTF( $s_file_name, $a_patient, $a_medical_cert, $a_user ){
 	$sect->writeText('Date of Birth(DD/MM/YYYY)    ', $label_font);
 	renderDate( $a_dob );
 
-	$sect->writeText('    Telephone Number', $label_font);
+	$sect->writeText('    Telephone Number    ', $label_font);
 	renderTextField( $a_patient->phone, false );
 
 	breakLine(2);
 	$sect->writeText('Address (must be residential address – not PO Box)  ', $label_font);
 	renderTextField( $a_patient->address, false );
 
-	$sect->writeText('    Suburb', $label_font);
+	$sect->writeText('    Suburb    ', $label_font);
 	renderTextField( $a_patient->suburb, false );
 
 	breakLine(2);
@@ -274,8 +274,9 @@ function generateRTF( $s_file_name, $a_patient, $a_medical_cert, $a_user ){
 	$sect->writeText('I consent to my treating medical practitioner, my employer (optional for CTP claims), the insurer, other medical practitioners or health related practitioners (whether consulting, treating or examining), workplace rehabilitation providers and SIRA exchanging information for the purpose of managing my injury and workers compensation/motor accident injury claim.<br><br>', $label_font);
 	$sect->writeText('I understand this information will be used by SIRA and insurers to fulfill their functions under the motor accident insurance and workers compensation legislation.<br><br>', $label_font);
 	$sect->writeText('Signature', $label_font);
-	$sect->writeText('<tab><tab>Date(DD/MM/YYYY)<br><br><br><br><tab><tab>', $label_font);
+	$sect->writeText('<tab><tab>Date(DD/MM/YYYY)<br><tab><tab>', $label_font);
 	renderDate( $a_int_date );
+	breakLine(3);
 
 
 	// Section 2
@@ -478,6 +479,7 @@ function generateRTF( $s_file_name, $a_patient, $a_medical_cert, $a_user ){
 	$sect->writeText('I agree to be the nominated treating doctor for the ongoing management of this person’s injury, treatment and recovery at/return to work (tick if you consent).<br><br>', $label_font);
 
 	// Section 3
+//	$sect->insertPageBreak();
 	breakLine(2);
 	$sect->writeText('Section 3: Employment declaration ', $section_font);
 	$sect->writeText('(not to be completed by the treating medical practitioner)', new PHPRtfLite_Font(8, $font_name));
