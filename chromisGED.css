@@ -2,10 +2,36 @@
   margin-bottom: 0;
   padding-bottom: 0;
 }
+.table tr td:first-child {
+  width: 40%;
+}
+.table tr td:nth-child(2) {
+  width: 60%;
+}
 #nav {
+  position: absolute;
+  left: 280px;
   align-items: baseline;
   margin: 1px;
   padding: 7px;
+}
+@media screen and (max-width: 768px) {
+  #collapsibleNavbar {
+    background-color: #fefefe;
+    border: 1px solid #eee;
+    padding-left: 10px;
+  }
+}
+@media screen and (max-width: 550px) {
+  #header {
+    display: block;
+  }
+  #nav {
+    left: 0;
+  }
+  #content {
+    margin-top: 50px;
+  }
 }
 #nav ul {
   padding: 0;
@@ -763,4 +789,12 @@ input {
 }
 .navbar-toggler:focus {
   box-shadow: 0 0 0 0.125rem;
+}
+
+.jqEasyCounterMsg {
+  float: right;
+}
+input[type="radio"] + label,
+input[type="checkbox"] + label {
+  cursor: pointer;
 }

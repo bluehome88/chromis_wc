@@ -95,7 +95,8 @@ $js = "
                 if( $('#password').val() != $('#confirmPassword').val()){ alert( 'The password entered does not match the confirmation. Please retype the password in both fields.' ); return false; }
             }
             return true;
-        }'$(document).ready( function(){
+        }
+        $(document).ready( function(){
             $('#password').keyup( setPasswordConfirm );
             $('#usertype').change( setLocationOptions );
             setPasswordConfirm();
@@ -162,7 +163,7 @@ echo getHeader('User management', $s_menu, $js);
             <tr>
                 <td>User Type</td>
                 <td>
-                    <select name="usertype" id="usertype" class="form-control form-control-sm">
+                    <select name="usertype" id="usertype" class="form-select form-select-sm">
                         <option value="USER" <?php echo ($webuser->usertype == "USER" ? "Selected" : "") ?>>User</option>
                         <option value="DOCTOR" <?php echo ($webuser->usertype == "DOCTOR" ? "Selected" : "") ?>>Doctor</option>
                         <option value="ADMIN" <?php echo ($webuser->usertype == "ADMIN" ? "Selected" : "") ?>>Administrator</option>
@@ -172,7 +173,9 @@ echo getHeader('User management', $s_menu, $js);
             <tr>
                 <td>Is Active</td>
                 <td>
-                    <input class="form-control form-control-sm" type="checkbox" name="active" value="Y" <?php echo (($editingCurrentUser || $webuser->active == "Y") ? "checked" : "") ?> <?php echo ($editingCurrentUser ? "disabled" : "") ?> />
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="check1" name="active" value="Y" <?php echo (($editingCurrentUser || $webuser->active == "Y") ? "checked" : ""); echo ($editingCurrentUser ? "disabled" : "") ?> />
+                    </div>
                 </td>
             </tr>
             <tr id="doctorLocationTR" valign="top">

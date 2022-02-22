@@ -8,8 +8,8 @@ echo getHeader('Medical certificate login');
   <div class="table-responsive">
     <table class="table">
       <tr>
-        <td width="254">Username</td>
-        <td width="389"><label>
+        <td style="width: 40%">Username</td>
+        <td style="width: 60%"><label>
             <input class="form-control form-control-sm" type="text" name="uname" id="username" />
           </label></td>
       </tr>

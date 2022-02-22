@@ -174,15 +174,18 @@ echo getHeader('Medical certificate form', $s_menu, $js, true);
                 <tr>
                     <td>Injury/disease is consistent with patient\'s description of cause?</td>
                     <td>
-                        <label class="radio">
-                            <input type="radio" required class="required valid" name="Contribute" value="Yes" <?php echo (strstr($a_medical_cert->work_is_factor, "Yes") ? "checked='checked'" : ""); ?> />Yes
-                        </label>
-                        <label class="radio">
-                            <input type="radio" required class="required valid" name="Contribute" value="No" <?php echo (strstr($a_medical_cert->work_is_factor, "No") ? "checked='checked'" : ""); ?> />No
-                        </label>
-                        <label class="radio">
-                            <input type="radio" required class="required valid" name="Contribute" value="Unknown" <?php echo (strstr($a_medical_cert->work_is_factor, "Unknown") || !$a_medical_cert->work_is_factor ? "checked='checked'" : ""); ?> />Unknown
-                        </label>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" id="radio41" name="Contribute" value="Yes" <?php echo (strstr($a_medical_cert->work_is_factor, "Yes") ? "checked='checked'" : ""); ?> />
+                            <label class="form-check-label" for="radio41">Yes</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" id="radio42" name="Contribute" value="No" <?php echo (strstr($a_medical_cert->work_is_factor, "No") ? "checked='checked'" : ""); ?> />
+                            <label class="form-check-label" for="radio42">No</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" id="radio43" name="Contribute" value="Unknown" <?php echo (strstr($a_medical_cert->work_is_factor, "Unknown") || !$a_medical_cert->work_is_factor ? "checked='checked'" : ""); ?> />
+                            <label class="form-check-label" for="radio43">Unknown</label>
+                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -294,7 +297,7 @@ echo getHeader('Medical certificate form', $s_menu, $js, true);
                     <td>Duration</td>
                     <td class="field">
                         <div class="control-group">
-                            <select name="i1" class="suit required form-control form-control-sm" id="DR_WCMC-element-34">
+                            <select name="i1" class="suit required form-select form-select-sm" id=" DR_WCMC-element-34">
                                 <option value="">Please select (hours per day)</option>
                                 <?php
                                 $a_options = array();
@@ -316,7 +319,7 @@ echo getHeader('Medical certificate form', $s_menu, $js, true);
                             </select>
                         </div>
                         <div class="control-group">
-                            <select name="i2" class="suit required form-control form-control-sm form-control form-control-sm-sm" id="DR_WCMC-element-36">
+                            <select name="i2" class="suit required form-select form-select-sm" id="DR_WCMC-element-36">
                                 <option value="">Please select (days per week)</option>
                                 <?php
                                 $a_options = array();
@@ -402,7 +405,7 @@ echo getHeader('Medical certificate form', $s_menu, $js, true);
                             <label class="form-check-label" for="radio11">Yes</label>
                         </div>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" id="radio12" name="AssReq" value="No" <?php echo (strstr($a_medical_cert->assreq, "No") ? "checked='checked'" : ""); ?> />
+                            <input type="radio" class="form-check-input" id="radio12" name="AssReq" value="No" <?php echo (strstr($a_medical_cert->assreq, "No") ? "" : "checked='checked'"); ?> />
                             <label class="form-check-label" for="radio12">No</label>
                         </div>
                     </td>
@@ -417,7 +420,7 @@ echo getHeader('Medical certificate form', $s_menu, $js, true);
             <tr>
                 <td>Lifting/carrying capacity</td>
                 <td class="field">
-                    <select name="i3" class="unfisuit form-control form-control-sm form-control form-control-sm-sm" id="DR_WCMC-element-47">
+                    <select name="i3" class="unfisuit form-select form-select-sm" id="DR_WCMC-element-47">
                         <?php
                         $a_options = array();
                         $a_options = array(
@@ -442,7 +445,7 @@ echo getHeader('Medical certificate form', $s_menu, $js, true);
             <tr>
                 <td>Sitting tolerance</td>
                 <td class="field">
-                    <select name="i5" class="unfisuit form-control form-control-sm form-control form-control-sm-sm" id="DR_WCMC-element-49">
+                    <select name="i5" class="unfisuit form-select form-select-sm" id="DR_WCMC-element-49">
                         <?php
                         $a_options = array();
                         $a_options['Unrestricted'] = 'Unrestricted';
@@ -479,7 +482,7 @@ echo getHeader('Medical certificate form', $s_menu, $js, true);
             <tr>
                 <td>Standing tolerance</td>
                 <td class="field">
-                    <select name="i9" class="unfisuit form-control form-control-sm form-control form-control-sm-sm" id="DR_WCMC-element-51">
+                    <select name="i9" class="unfisuit form-select form-select-sm" id="DR_WCMC-element-51">
                         <?php
                         $a_options = array();
                         $a_options['Unrestricted'] = 'Unrestricted';
@@ -509,7 +512,7 @@ echo getHeader('Medical certificate form', $s_menu, $js, true);
             <tr>
                 <td>Pushing/pulling ability</td>
                 <td class="field">
-                    <select name="i4" class="unfisuit form-control form-control-sm form-control form-control-sm-sm" id="DR_WCMC-element-53">
+                    <select name="i4" class="unfisuit form-select form-select-sm" id="DR_WCMC-element-53">
                         <?php
                         $a_options = array();
                         $a_options = array(
@@ -534,7 +537,7 @@ echo getHeader('Medical certificate form', $s_menu, $js, true);
             <tr>
                 <td>Bending/twisting/squatting ability</td>
                 <td class="field">
-                    <select name="i6" class="unfisuit form-control form-control-sm form-control form-control-sm-sm" id="DR_WCMC-element-55">
+                    <select name="i6" class="unfisuit form-select form-select-sm" id="DR_WCMC-element-55">
                         <?php
                         $a_options = array(
                             'Unrestricted' => 'Unrestricted',
@@ -555,7 +558,7 @@ echo getHeader('Medical certificate form', $s_menu, $js, true);
             <tr>
                 <td>Driving ability</td>
                 <td class="field">
-                    <select name="i7" class="unfisuit form-control form-control-sm form-control form-control-sm-sm" id="DR_WCMC-element-57">
+                    <select name="i7" class="unfisuit form-select form-select-sm" id="DR_WCMC-element-57">
                         <?php
                         $a_options2 = array();
                         $a_options2['Unrestricted'] = 'Unrestricted';
@@ -642,7 +645,7 @@ echo getHeader('Medical certificate form', $s_menu, $js, true);
                                 }
                             }
                             echo '<div class="form-check">
-<input type="radio" class="form-check-input" id="DR_WCMC-element-61-' . ++$index . '" name="OTH[]" value="' . $key . '" ' . $checked . '" checked>
+<input type="checkbox" class="form-check-input" id="DR_WCMC-element-61-' . ++$index . '" name="OTH[]" value="' . $key . '" ' . $checked . '>
 <label class="form-check-label" for="DR_WCMC-element-61-' . $index . '">' . $val . '</label>
 </div>';
                         }
@@ -667,8 +670,7 @@ echo getHeader('Medical certificate form', $s_menu, $js, true);
                                     $checked = "checked";
                                 }
                             }
-
-                            echo '<label class="checkbox"> <input id="DR_WCMC-element-63-' . $index++ . '" type="checkbox" name="OTH[]" class="atext" value="' . $key . '" ' . $checked . '>' . $val . ' </label>';
+                            echo '<div class="form-check"><input class="form-check-input" type="checkbox" id="DR_WCMC-element-63-' . ++$index . '" name="OTH[]" value="' . $key . '" ' . $checked . '><label for="DR_WCMC-element-63-' . $index . '" class="form-check-label">' . $val . '</label></div>';
                         }
                         ?>
                     </td>
@@ -690,7 +692,8 @@ echo getHeader('Medical certificate form', $s_menu, $js, true);
                                 }
                             }
 
-                            echo '<label class="checkbox"> <input id="DR_WCMC-element-65-' . $index++ . '" type="checkbox" name="OTH[]" class="atext" value="' . $key . '" ' . $checked . '>' . $val . ' </label>';
+                            // echo '<label class="checkbox"> <input id="DR_WCMC-element-65-' . $index++ . '" type="checkbox" name="OTH[]" class="atext" value="' . $key . '" ' . $checked . '>' . $val . ' </label>';
+                            echo '<div class="form-check"><input class="form-check-input" type="checkbox" id="DR_WCMC-element-65-' . ++$inex . '" name="OTH[]" value="' . $key . '" ' . $checked . '><label for="DR_WCMC-element-65-' . $inex . '" class="form-check-label">' . $val . '</label></div>';
                         }
                         ?>
                     </td>
@@ -762,23 +765,27 @@ echo getHeader('Medical certificate form', $s_menu, $js, true);
             <tr>
                 <td>Please tick if you agree to be the nominated treating doctor for the ongoing management of this worker\'s injury and return to work:</td>
                 <td>
-                    <label class="radio">
-                        <input type="radio" required class="required valid" name="Commit" value="Yes" <?php echo (strstr($a_patient->doctor_agrees, "Yes") ? "checked='checked'" : ""); ?> />Yes
-                    </label>
-                    <label class="radio">
-                        <input type="radio" required class="required valid" name="Commit" value="No" <?php echo (strstr($a_patient->doctor_agrees, "No") ? "checked='checked'" : ""); ?> />No
-                    </label>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="radio51" name="Commit" value="Yes" <?php echo (strstr($a_patient->doctor_agrees, "Yes") ? "checked='checked'" : ""); ?> />
+                        <label class="form-check-label" for="radio51">Yes</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="radio52" name="Commit" value="No" <?php echo (strstr($a_patient->doctor_agrees, "No") ? "checked='checked'" : ""); ?> />
+                        <label class="form-check-label" for="radio52">No</label>
+                    </div>
                 </td>
             </tr>
             <tr>
                 <td>PDF options:</td>
                 <td>
-                    <label class="radio">
-                        <input type="radio" required class="required valid" name="output" value="all" <?php echo (strstr("all", "all") ? "checked='checked'" : ""); ?> />Output the whole form.
-                    </label>
-                    <label class="radio">
-                        <input type="radio" required class="required valid" name="output" value="page2" <?php echo (strstr("all", "page2") ? "checked='checked'" : ""); ?> />Output just page 2 of the form.
-                    </label>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="radio61" name="output" value="all" <?php echo (strstr("all", "all") ? "checked='checked'" : ""); ?> />
+                        <label class="form-check-label" for="radio61">Output the whole form.</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="radio62" name="output" value="page2" <?php echo (strstr("all", "page2") ? "checked='checked'" : ""); ?> />
+                        <label class="form-check-label" for="radio62">Output just page 2 of the form.</label>
+                    </div>
                 </td>
             </tr>
             <tr>

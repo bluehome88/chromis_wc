@@ -167,7 +167,7 @@ echo getHeader('Client record', $s_menu, $js);
       </td>
     </tr>
     <tr>
-      <td colspan="2" class="text-center"><button type="submit" class="btn btn-primary" name="Submit" value="Save" onClick="MM_validateForm('OtherNames','','R', 'Surname','','R','PCode','','RisNum','Address','','R','Suburb','','R','R','Postcode','','R');return document.MM_returnValue">Submit</button></td>
+      <td colspan="2" class="text-center"><button type="submit" class="btn btn-primary btn-sm" name="Submit" value="Save" onClick="MM_validateForm('OtherNames','','R', 'Surname','','R','PCode','','RisNum','Address','','R','Suburb','','R','R','Postcode','','R');return document.MM_returnValue">Submit</button></td>
     </tr>
   </table>
 </form>

@@ -35,14 +35,14 @@ if (isset($_POST['mode']) && $_POST['mode'] == 'form2') {
     $a_medical_cert->diagnosis           = $_POST['diagnosis'];
     $a_medical_cert->work_is_factor      = $_POST['Contribute'];
     $a_medical_cert->fit_for_work_status = $_POST['WFit'];
-    $a_medical_cert->exam_date           = isset($_POST['exam_date']) ? re_format_date($_POST['exam_date']) : "0000-00-00";
-    $a_medical_cert->manag_plan          = isset($_POST['MPlan']) ? re_format_date($_POST['MPlan']) : "0000-00-00";
+    $a_medical_cert->exam_date           = isset($_POST['exam_date']) ? re_format_date($_POST['exam_date']) : NULL;
+    $a_medical_cert->manag_plan          = isset($_POST['MPlan']) ? re_format_date($_POST['MPlan']) : NULL;
     // $a_medical_cert->treat_rev_date      = re_format_date($_POST['TReview']);
-    $a_medical_cert->unfitfrom           = isset($_POST['UnfitFrom']) && $_POST['UnfitFrom'] ? re_format_date($_POST['UnfitFrom']) : "0000-00-00";
-    $a_medical_cert->unfitto             = isset($_POST['UnfitTo']) && $_POST['UnfitTo'] ? re_format_date($_POST['UnfitTo']) : "0000-00-00";
-    $a_medical_cert->suitfrom             = isset($_POST['SuitFrom']) && $_POST['SuitFrom'] ? re_format_date($_POST['SuitFrom']) : "0000-00-00";
-    $a_medical_cert->suitto             = isset($_POST['SuitTo']) && $_POST['SuitTo'] ? re_format_date($_POST['SuitTo']) : "0000-00-00";
-    $a_medical_cert->modfrom             = isset($_POST['ModFrom']) && $_POST['ModFrom'] ? re_format_date($_POST['ModFrom']) : "0000-00-00";
+    $a_medical_cert->unfitfrom           = isset($_POST['UnfitFrom']) && $_POST['UnfitFrom'] ? re_format_date($_POST['UnfitFrom']) : NULL;
+    $a_medical_cert->unfitto             = isset($_POST['UnfitTo']) && $_POST['UnfitTo'] ? re_format_date($_POST['UnfitTo']) : NULL;
+    $a_medical_cert->suitfrom             = isset($_POST['SuitFrom']) && $_POST['SuitFrom'] ? re_format_date($_POST['SuitFrom']) : NULL;
+    $a_medical_cert->suitto             = isset($_POST['SuitTo']) && $_POST['SuitTo'] ? re_format_date($_POST['SuitTo']) : NULL;
+    $a_medical_cert->modfrom             = isset($_POST['ModFrom']) && $_POST['ModFrom'] ? re_format_date($_POST['ModFrom']) : NULL;
     $a_medical_cert->assreq              = isset($_POST['AssReq']) ? $_POST['AssReq'] : NULL;
     $a_medical_cert->has_cap_for_duration       = $_POST['i1'];
     $a_medical_cert->has_cap_for_duration_days  = $_POST['i2'];
@@ -58,7 +58,7 @@ if (isset($_POST['mode']) && $_POST['mode'] == 'form2') {
         $a_medical_cert->other_restrictions_details = implode(", ", $_POST['OTH']);
     }
     $a_medical_cert->other_restrictions_other = $_POST['OTH_TXT'];
-    $a_medical_cert->fitness_review_date      = isset($_POST['FReview']) && $_POST['FReview'] ? re_format_date($_POST['FReview']) : "0000-00-00";
+    $a_medical_cert->fitness_review_date      = isset($_POST['FReview']) && $_POST['FReview'] ? re_format_date($_POST['FReview']) : NULL;
     $a_medical_cert->pre_existing_factors     = $_POST['pre_existing_factors'];
     $a_medical_cert->post_desc                = $_POST['post_desc'];
     $a_medical_cert->est_return_to_work       = $_POST['est_return_to_work'];

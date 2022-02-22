@@ -93,7 +93,7 @@ echo getHeader('Location add / edit interface', $s_menu, $js, true);
             </tr>
             <tr>
                 <td colspan="2" class="text-center">
-                    <label><button type="submit" class="btn btn-primary" id="location-element-18" value="Save Location">Save Location</button>
+                    <label><button type="submit" class="btn btn-sm btn-primary" id="location-element-18" value="Save Location">Save Location</button>
                 </td>
             </tr>
         </table>

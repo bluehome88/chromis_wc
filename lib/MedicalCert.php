@@ -54,7 +54,7 @@ class MedicalCert {
         $this->suitfrom = NULL;
         $this->suitto = NULL;
         $this->modfrom = NULL;
-        $this->assreq = "NO";
+        $this->assreq = "No";
         $this->exam_date = date('Y-m-d');
         $this->has_cap_for_duration = "";
         $this->has_cap_for_duration_days = "";
@@ -67,7 +67,7 @@ class MedicalCert {
         $this->other_restrictions = "";
         $this->other_restrictions_details = "";
         $this->other_restrictions_other = "";
-        $this->fitness_review_date = '0000-00-00';
+        $this->fitness_review_date = NULL;
         $this->pre_existing_factors = '';
         $this->post_desc = '';
         $this->est_return_to_work = '';

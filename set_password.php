@@ -71,8 +71,8 @@ echo getHeader('Password management', $s_menu, $js);
       </tr>
       <tr>
         <td class="text-center" colspan="2">
-          <button type="submit" class="btn btn-primary" name="Submit" value="Save">Save</button>
-          <button type="submit" class="btn btn-error" name="Cancel" value="Cancel" onclick="window.location='<?php echo getStartPage($user) ?>'">Cancel</button>
+          <button type="submit" class="btn btn-sm btn-primary" name="Submit" value="Save">Save</button>
+          <button type="submit" class="btn btn-sm btn-secondary" name="Cancel" value="Cancel" onclick="window.location='<?php echo getStartPage($user) ?>'">Cancel</button>
         </td>
       </tr>
     </table>

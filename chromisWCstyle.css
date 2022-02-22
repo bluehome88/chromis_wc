@@ -198,7 +198,9 @@ html {
 }
 /*Main content of site*/
 #content {
+  margin-top: 30px;
   width: max(66%, 550px);
+  max-width: 1000px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
   color: #333;
@@ -294,10 +296,11 @@ h6 {
   color: #404040;
   background-image: url(images/category_header.jpg);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   background-position: right bottom;
-  padding: 10px 0 10px 10px;
+  padding-bottom: 20px;
   margin-bottom: 0px;
+  padding-top: 10px;
   border-left-width: 1px;
   border-left-style: solid;
   border-left-color: #ffffff;
@@ -1794,4 +1797,11 @@ body {
 }
 .headroom {
   height: 40px;
+}
+.btn{
+  padding: 5px 13px;
+}
+.btn:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }
