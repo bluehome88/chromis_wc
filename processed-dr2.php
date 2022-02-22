@@ -16,15 +16,20 @@ if( isset($_GET['i']) && isset($_GET['j']) ){
     $s_file_name = '';
     $a_replace = array(' ', "'", '-', '"','(',')');
     $s_file_name = 'WCCC_'. date('Y_m_d') .'_'. str_replace( $a_replace, '', $a_patient->surname) .'_'. str_replace( $a_replace, '', $a_patient->othernames);
-    // $o->bootstrap(
-    //     $s_file_name,
-    //     $a_patient,
-    //     $a_medical_cert,
-    //     $_SESSION['User'],
-    //     false,
-    //     $_SESSION['output'] != 'all' ? true : false
-    // );
-    generateRTF( $s_file_name, $a_patient, $a_medical_cert, $_SESSION['User'] );
+
+    if( $_SESSION['output'] != 'all' ){
+      $o->bootstrap(
+          $s_file_name,
+          $a_patient,
+          $a_medical_cert,
+          $_SESSION['User'],
+          false,
+          false
+      );
+    }
+    else
+      generateRTF( $s_file_name, $a_patient, $a_medical_cert, $_SESSION['User'] );
+
     exit();
 }
 

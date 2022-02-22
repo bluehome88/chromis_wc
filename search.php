@@ -76,20 +76,22 @@ if (!isset($_POST['Surname'])) {
   ?>
     <h6>Search results</h6>
     <div class="table-responsive">
-      <table class="table" border="0" cellspacing="0" cellpadding="5" width="100%">
-        <tr>
-          <td width="132">Name</td>
-          <td width="72">DOB</td>
-          <td width="72">DOI</td>
-          <td width="302">Diagnosis</td>
-        </tr>
+      <table class="table">
+        <thead>
+          <tr>
+            <td style="width: 30%">Name</td>
+            <td style="width: 10%">DOB</td>
+            <td style="width: 10%">DOI</td>
+            <td>Diagnosis</td>
+          </tr>
+        </thead>
         <?php
         while ($stmt->fetch()) {
         ?>
           <tr valign="top">
-            <td><a href='WorkersComp_form.php?id=<?php echo $patientId ?>'><?php echo $surname ?>, <?php echo $othernames ?></a></td>
-            <td><?php echo $dob ?></td>
-            <td><?php echo $injury_dateof ?></td>
+            <td style="width: 30%"><a href='WorkersComp_form.php?id=<?php echo $patientId ?>'><?php echo $surname ?>, <?php echo $othernames ?></a></td>
+            <td style="width: 10%;"><?php echo $dob ?></td>
+            <td style="width: 10%;"><?php echo $injury_dateof ?></td>
             <td>
               <?php
               $db2 = getDBConnection();
@@ -102,7 +104,7 @@ if (!isset($_POST['Surname'])) {
               ?>
                 <ul>
                   <?php while ($stmt2->fetch()) { ?>
-                    <li><?php echo $treat_rev_date ?> - <?php echo $diagnosis ?></li>
+                    <li style="margin-right: 0;margin-left: 0;"><?php echo $treat_rev_date ?> - <?php echo $diagnosis ?></li>
                   <?php } ?>
                 </ul>
               <?php

@@ -48,6 +48,7 @@ function generateRTF( $s_file_name, $a_patient, $a_medical_cert, $a_user ){
 	
 	global $value_font, $label_font, $sect;
 	/* Preprocess data */
+	
 	$a_dob = array();
     if( $a_patient->dob ){
         $a_dob = explode('-', $a_patient->dob);

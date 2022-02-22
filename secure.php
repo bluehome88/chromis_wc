@@ -63,6 +63,8 @@ function getHeader($s_heading, $s_menue = '', $js = '', $html5 = true, $s_meta =
         $r = '<!DOCTYPE HTML>
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    ' . $s_meta . '
     <title>CHROMIS Workcover NSW Medical Certificate: ' . $s_heading . '</title>
     <link href="./scripts/bootstrap/bootstrap.min.css" rel="stylesheet">
     <!--[if lt IE 9]>

@@ -153,6 +153,7 @@ echo getHeader('Medical certificate form', $s_menu, $js, true);
     </div>
 
     <div class="Initial">
+        <br/>
         <h6>Initial certificate only</h6>
         <div class="table-responsive">
             <table class="docForm table">
@@ -776,15 +777,15 @@ echo getHeader('Medical certificate form', $s_menu, $js, true);
                 </td>
             </tr>
             <tr>
-                <td>PDF options:</td>
+                <td>Output options:</td>
                 <td>
                     <div class="form-check">
                         <input type="radio" class="form-check-input" id="radio61" name="output" value="all" <?php echo (strstr("all", "all") ? "checked='checked'" : ""); ?> />
-                        <label class="form-check-label" for="radio61">Output the whole form.</label>
+                        <label class="form-check-label" for="radio61">Output to RTF Format.</label>
                     </div>
                     <div class="form-check">
                         <input type="radio" class="form-check-input" id="radio62" name="output" value="page2" <?php echo (strstr("all", "page2") ? "checked='checked'" : ""); ?> />
-                        <label class="form-check-label" for="radio62">Output just page 2 of the form.</label>
+                        <label class="form-check-label" for="radio62">Output to PDF Format.</label>
                     </div>
                 </td>
             </tr>
