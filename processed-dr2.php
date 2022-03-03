@@ -18,14 +18,19 @@ if( isset($_GET['i']) && isset($_GET['j']) ){
     $s_file_name = 'WCCC_'. date('Y_m_d') .'_'. str_replace( $a_replace, '', $a_patient->surname) .'_'. str_replace( $a_replace, '', $a_patient->othernames);
 
     if( $_SESSION['output'] != 'all' ){
-      $o->bootstrap(
-          $s_file_name,
-          $a_patient,
+      // $o->bootstrap(
+      //     $s_file_name,
+      //     $a_patient,
+      //     $a_medical_cert,
+      //     $_SESSION['User'],
+      //     false,
+      //     false
+      // );
+      $o->generatePDF( 
+          $s_file_name, 
+          $a_patient, 
           $a_medical_cert,
-          $_SESSION['User'],
-          false,
-          false
-      );
+          $_SESSION['User'] );
     }
     else
       generateRTF( $s_file_name, $a_patient, $a_medical_cert, $_SESSION['User'] );
