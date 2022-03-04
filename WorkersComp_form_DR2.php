@@ -702,8 +702,12 @@ echo getHeader('Medical certificate form', $s_menu, $js, true);
                 <tr>
                     <td class="title">Other</td>
                     <td class="field">
-                        <textarea rows="4" cols="30" name="OTH_TXT" class="sml otext form-control form-control-sm" id="DR_WCMC-element-67"><?php echo $a_medical_cert->other_restrictions_other; ?></textarea>
-                        <p><b>Historic information from last certificate:</b><br />&quot;<?php echo $a_medical_cert->other_restrictions_other; ?>&quot;</p>
+                        <?php 
+                        if($a_medical_cert->other_restrictions_other){
+                            $s_historic = '<p><b>Historic information from last certificate:</b><br />&quot;'. $a_medical_cert->other_restrictions_other .'&quot;</p>';
+                        }
+                        ?>
+                        <textarea rows="4" cols="30" name="OTH_TXT" class="sml otext form-control form-control-sm" id="DR_WCMC-element-67"><?php echo s_historic; ?></textarea>
                     </td>
                 </tr>
             </table>

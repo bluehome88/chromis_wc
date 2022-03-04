@@ -1,3 +1,4 @@
 config.php
 *.fdf
 /pdf/WC*.pdf
+/rtf/WC*.rtf
