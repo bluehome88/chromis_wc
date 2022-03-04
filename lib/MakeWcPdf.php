@@ -358,144 +358,144 @@ trailer
     // ...
     public function generatePDF( $s_file_name, $a_patient, $a_medical_cert, $a_user ){
         // preprocess data 
-    $a_dob = array();
-    if( $a_patient->dob ){
-        $a_dob = explode('-', $a_patient->dob);
-    }
+        $a_dob = array();
+        if( $a_patient->dob ){
+            $a_dob = explode('-', $a_patient->dob);
+        }
 
-    $a_inj_date = array();
-    if( $a_patient->injury_dateof ){
-        $a_inj_date = explode('-', $a_patient->injury_dateof);
-    }
+        $a_inj_date = array();
+        if( $a_patient->injury_dateof ){
+            $a_inj_date = explode('-', $a_patient->injury_dateof);
+        }
 
-    $a_int_date = array();
-    if( $a_medical_cert->exam_date && $a_patient->cons_status == 'Initial' ){
-        $a_int_date = explode('-', $a_medical_cert->exam_date);
-    }
+        $a_int_date = array();
+        if( $a_medical_cert->exam_date && $a_patient->cons_status == 'Initial' ){
+            $a_int_date = explode('-', $a_medical_cert->exam_date);
+        }
 
-    $a_int_date2 = array();
-    if( $a_medical_cert->exam_date ){
-        $a_int_date2 = explode('-', $a_medical_cert->exam_date);
-    }
+        $a_int_date2 = array();
+        if( $a_medical_cert->exam_date ){
+            $a_int_date2 = explode('-', $a_medical_cert->exam_date);
+        }
 
-    $a_first_seen_date = array();
-    if( $a_patient->date_first_seen && $a_patient->cons_status == 'Initial' ){
-        $a_first_seen_date = explode('-', $a_patient->date_first_seen);
-    }
+        $a_first_seen_date = array();
+        if( $a_patient->date_first_seen && $a_patient->cons_status == 'Initial' ){
+            $a_first_seen_date = explode('-', $a_patient->date_first_seen);
+        }
 
-    $a_patient_address = array();
-    $a_patient_address = arrayLoader(
-        array(
-            $a_patient->address,
-            $a_patient->suburb,
-            $a_patient->state .' '. $a_patient->postcode
-        )
-    );
+        $a_patient_address = array();
+        $a_patient_address = arrayLoader(
+            array(
+                $a_patient->address,
+                $a_patient->suburb,
+                $a_patient->state .' '. $a_patient->postcode
+            )
+        );
 
-    $a_emp_details = array();
-    $a_emp_details  = arrayLoader(
-        array(
-            $a_patient->emp_name,
-            $a_patient->emp_address,
-            $a_patient->emp_suburb,
-            $a_patient->emp_state .' '. $a_patient->emp_postcode
-        )
-    );
+        $a_emp_details = array();
+        $a_emp_details  = arrayLoader(
+            array(
+                $a_patient->emp_name,
+                $a_patient->emp_address,
+                $a_patient->emp_suburb,
+                $a_patient->emp_state .' '. $a_patient->emp_postcode
+            )
+        );
 
-    $a_doc_loc = array();
-    $a_doc_loc  = arrayLoader(
-        array(
-            $a_user['LocationName'],
-            $a_user['LocationAddress'],
-            $a_user['LocationSuburb'],
-            $a_user['LocationState'] .' '. $a_user['LocationPostcode']
-        )
-    );
+        $a_doc_loc = array();
+        $a_doc_loc  = arrayLoader(
+            array(
+                $a_user['LocationName'],
+                $a_user['LocationAddress'],
+                $a_user['LocationSuburb'],
+                $a_user['LocationState'] .' '. $a_user['LocationPostcode']
+            )
+        );
 
-    $a_review_date = array();
-    if( $a_medical_cert->fitness_review_date ){
-        $a_review_date = explode('-', $a_medical_cert->fitness_review_date);
-    }
+        $a_review_date = array();
+        if( $a_medical_cert->fitness_review_date ){
+            $a_review_date = explode('-', $a_medical_cert->fitness_review_date);
+        }
 
-    $s_work_is_factor = '';
-    $s_occupation = '';
-    $s_emp_details = '';
-    $s_how_related = '';
-    $s_per_factors = '';
+        $s_work_is_factor = '';
+        $s_occupation = '';
+        $s_emp_details = '';
+        $s_how_related = '';
+        $s_per_factors = '';
 
-    switch( $a_medical_cert->work_is_factor ){
-        case 'Yes':
-            $s_work_is_factor = 'A';
-            break;
-        case 'No':
-            $s_work_is_factor = 'B';
-            break;
-        default:
-            $s_work_is_factor = 'C';
-    }
+        switch( $a_medical_cert->work_is_factor ){
+            case 'Yes':
+                $s_work_is_factor = 'Yes';
+                break;
+            case 'No':
+                $s_work_is_factor = '';
+                break;
+            default:
+                $s_work_is_factor = '';
+        }
 
-    $s_occupation = $a_patient->occupation;
-    $s_emp_details = implode(', ', $a_emp_details);
-    $s_how_related = $a_patient->injury_desc;
-    $s_per_factors = $a_medical_cert->pre_existing_factors;
+        $s_occupation = $a_patient->occupation;
+        $s_emp_details = implode(', ', $a_emp_details);
+        $s_how_related = $a_patient->injury_desc;
+        $s_per_factors = $a_medical_cert->pre_existing_factors;
 
-    $a_ffwork = array();
-    $a_ffwork['fit']      = '';
-    $a_ffwork['unfit']    = '';
-    $a_ffwork['suitable'] = '';
+        $a_ffwork = array();
+        $a_ffwork['fit']      = '';
+        $a_ffwork['unfit']    = '';
+        $a_ffwork['suitable'] = '';
 
-    $a_ffwork[ $a_medical_cert->fit_for_work_status ] = 'A';
+        $a_ffwork[ $a_medical_cert->fit_for_work_status ] = 'A';
 
-    $a_unfit_from = array();
-    $a_unfit_to = array();
-    $a_suit_from = array();
-    $a_suit_to = array();
-    $a_mod_from = array();
-    $a_duration = array();
-    $s_est_return_to_work = '';
+        $a_unfit_from = array();
+        $a_unfit_to = array();
+        $a_suit_from = array();
+        $a_suit_to = array();
+        $a_mod_from = array();
+        $a_duration = array();
+        $s_est_return_to_work = '';
 
-    switch( $a_medical_cert->fit_for_work_status ){
-        case 'unfit':
-            $a_unfit_from = explode('-', $a_medical_cert->unfitfrom);
-            $a_unfit_to   = explode('-', $a_medical_cert->unfitto);
-            $s_est_return_to_work = $a_medical_cert->est_return_to_work;
-            break;
-        case 'suitable':
-            $a_suit_from = explode('-', $a_medical_cert->suitfrom);
-            $a_suit_to   = explode('-', $a_medical_cert->suitto);
-            $a_duration['h'] = $a_medical_cert->has_cap_for_duration;
-            $a_duration['d'] = $a_medical_cert->has_cap_for_duration_days;
-            break;
-    }
+        switch( $a_medical_cert->fit_for_work_status ){
+            case 'unfit':
+                $a_unfit_from = explode('-', $a_medical_cert->unfitfrom);
+                $a_unfit_to   = explode('-', $a_medical_cert->unfitto);
+                $s_est_return_to_work = $a_medical_cert->est_return_to_work;
+                break;
+            case 'suitable':
+                $a_suit_from = explode('-', $a_medical_cert->suitfrom);
+                $a_suit_to   = explode('-', $a_medical_cert->suitto);
+                $a_duration['h'] = $a_medical_cert->has_cap_for_duration;
+                $a_duration['d'] = $a_medical_cert->has_cap_for_duration_days;
+                break;
+        }
 
-    $s_rest = '';
-    $s_ass_req = '';
-    $s_has_cap_for_liftingupto = '';
-    $s_has_cap_for_sittingupto = '';
-    $s_has_cap_for_standingupto = '';
-    $s_has_cap_for_walkingupto = '';
-    $s_has_cap_for_keyingupto = '';
-    $s_has_cap_for_travellingupto = '';
-    $s_comment = '';
+        $s_rest = '';
+        $s_ass_req = '';
+        $s_has_cap_for_liftingupto = '';
+        $s_has_cap_for_sittingupto = '';
+        $s_has_cap_for_standingupto = '';
+        $s_has_cap_for_walkingupto = '';
+        $s_has_cap_for_keyingupto = '';
+        $s_has_cap_for_travellingupto = '';
+        $s_comment = '';
 
-    $s_ass_req = 'B';
-    if($a_medical_cert->assreq == 'Yes'){
-        $s_ass_req = 'A';
-    }
+        $s_ass_req = 'B';
+        if($a_medical_cert->assreq == 'Yes'){
+            $s_ass_req = 'A';
+        }
 
-    $s_rest = 'n/a';
-    if( $a_medical_cert->other_restrictions == 'OTHER' ){
-        $s_rest = $a_medical_cert->other_restrictions_other;
-    }
+        $s_rest = 'n/a';
+        if( $a_medical_cert->other_restrictions == 'OTHER' ){
+            $s_rest = $a_medical_cert->other_restrictions_other;
+        }
 
-    $s_fact_delay = $a_medical_cert->fact_delay;
-    $s_has_cap_for_liftingupto    = $a_medical_cert->has_cap_for_liftingupto;
-    $s_has_cap_for_sittingupto    = $a_medical_cert->has_cap_for_sittingupto;
-    $s_has_cap_for_standingupto   = $a_medical_cert->has_cap_for_standingupto;
-    $s_has_cap_for_walkingupto    = $a_medical_cert->has_cap_for_walkingupto;
-    $s_has_cap_for_keyingupto     = $a_medical_cert->has_cap_for_keyingupto;
-    $s_has_cap_for_travellingupto = $a_medical_cert->has_cap_for_travellingupto;
-    $s_comment                    = $a_medical_cert->comment;
+        $s_fact_delay = $a_medical_cert->fact_delay;
+        $s_has_cap_for_liftingupto    = $a_medical_cert->has_cap_for_liftingupto;
+        $s_has_cap_for_sittingupto    = $a_medical_cert->has_cap_for_sittingupto;
+        $s_has_cap_for_standingupto   = $a_medical_cert->has_cap_for_standingupto;
+        $s_has_cap_for_walkingupto    = $a_medical_cert->has_cap_for_walkingupto;
+        $s_has_cap_for_keyingupto     = $a_medical_cert->has_cap_for_keyingupto;
+        $s_has_cap_for_travellingupto = $a_medical_cert->has_cap_for_travellingupto;
+        $s_comment                    = $a_medical_cert->comment;
 
         $fields = array(
             'Check Box 1' => $a_patient->cons_status == 'Initial' ? 'A' : '',
@@ -580,6 +580,7 @@ trailer
         $pdf->useCheckboxParser = true; // Checkbox parsing is ignored (default FPDM behaviour) unless enabled with this setting
         $pdf->Load($fields, true);
         $pdf->Merge();
-        $pdf->Output('i', $s_file_name. '.pdf');
+        $pdf->Output('D', $s_file_name. '.pdf');
+        $pdf->Output('F', PDF_WRITE_FOLDER. $s_file_name. '.pdf');
     }
 }
