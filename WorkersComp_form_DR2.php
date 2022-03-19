@@ -324,10 +324,10 @@ echo getHeader('Medical certificate form', $s_menu, $js, true);
                                 <option value="">Please select (days per week)</option>
                                 <?php
                                 $a_options = array();
-                                for ($i = 1; $i <= 12; $i++) {
-                                    $s_posfix = ' hours per day';
+                                for ($i = 1; $i <= 7; $i++) {
+                                    $s_posfix = ' days per week';
                                     if ($i == 1) {
-                                        $s_posfix = ' hour per day';
+                                        $s_posfix = ' day per week';
                                     }
                                     $a_options[$i] = $i . $s_posfix;
                                 }

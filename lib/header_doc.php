@@ -22,7 +22,7 @@ if( isset($b_user_area) &&  $b_user_area == 1 ){
         header('Location: '. SECURE_URL . LOGIN_FORM );
         exit;
     } else if( isDoctor() && !isLocationSet()) {
-        if( $_SERVER['SCRIPT_NAME'] != '/wc-dev' . DOC_LOCATION ){
+        if( $_SERVER['SCRIPT_NAME'] != '/wc' . DOC_LOCATION ){
             header('Location: '. SECURE_URL . DOC_LOCATION );
             exit;
         }
